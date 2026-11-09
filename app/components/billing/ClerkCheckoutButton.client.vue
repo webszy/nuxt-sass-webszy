@@ -29,4 +29,4 @@ async function checkout() {
   } finally { pending.value = false }
 }
 </script>
-<template><UButton :loading="pending" :disabled="!isLoaded || !config.public.creemPaymentEnabled" @click="checkout">{{ config.public.creemPaymentEnabled ? 'Buy credits' : 'Purchases unavailable' }}</UButton><p v-if="message" role="alert" class="error">{{ message }}</p></template>
+<template><UButton :loading="pending" :disabled="!isLoaded || !config.public.creemPaymentEnabled" @click="checkout">{{ config.public.creemPaymentEnabled ? 'Buy credits' : 'Purchases unavailable' }}</UButton><p v-if="message" role="alert" class="ds-error">{{ message }}</p></template>

@@ -1,3 +1,5 @@
+import { removeDevOnlyPages } from './scripts/dev-pages.mjs'
+
 const clerkConfigured = Boolean(process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY?.trim() && process.env.NUXT_CLERK_SECRET_KEY?.trim())
 const creemPaymentEnabled = process.env.NUXT_CREEM_PAYMENT_ENABLED === 'true'
 export default defineNuxtConfig({
@@ -6,6 +8,12 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', ...(clerkConfigured ? ['@clerk/nuxt'] : [])],
   build: { transpile: ['@clerk/nuxt'] },
   css: ['~/assets/css/main.css'],
+  hooks: {
+    // The design-system gallery lives at app/pages/dev and must not ship.
+    'pages:extend'(pages) {
+      if (process.env.NODE_ENV === 'production') removeDevOnlyPages(pages)
+    },
+  },
   nitro: { preset: 'cloudflare-module' },
   runtimeConfig: {
     creemPaymentEnabled,

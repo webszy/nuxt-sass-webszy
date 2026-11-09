@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "name": "nuxt-saas-starter",
+  "framework": {
+    "nuxt": "4.5.2",
+    "nuxtUi": "4.10.0",
+    "tailwindcss": "4.3.3"
+  },
+  "preferPrimitives": [
+    "UButton",
+    "UCard",
+    "UAlert",
+    "UEmpty",
+    "USkeleton",
+    "UContainer",
+    "UModal",
+    "UTable",
+    "UForm",
+    "UInput"
+  ],
+  "components": [
+    {
+      "name": "UiAsyncState",
+      "slug": "ui-async-state",
+      "category": "ui",
+      "purpose": "在一个区域切换 Loading、Empty、Error 和 Ready。",
+      "source": "app/components/ui/AsyncState.vue",
+      "docs": "docs/design-system/ui-async-state.md",
+      "props": [
+        { "name": "status", "type": "'loading' | 'empty' | 'error' | 'ready'", "required": true, "description": "当前状态" },
+        { "name": "title", "type": "string", "required": false, "description": "Empty 或 Error 标题" },
+        { "name": "description", "type": "string", "required": false, "description": "Empty 或 Error 说明" }
+      ],
+      "slots": [
+        { "name": "default", "description": "Ready 内容" },
+        { "name": "loading", "description": "替换骨架屏" },
+        { "name": "empty", "description": "替换空状态" },
+        { "name": "error", "description": "替换错误提示" },
+        { "name": "actions", "description": "Empty 或 Error 上的操作" }
+      ],
+      "states": ["loading", "empty", "error", "ready"]
+    },
+    {
+      "name": "UiMetric",
+      "slug": "ui-metric",
+      "category": "ui",
+      "purpose": "展示一个带标签的指标，并处理加载、空值和错误。",
+      "source": "app/components/ui/Metric.vue",
+      "docs": "docs/design-system/ui-metric.md",
+      "props": [
+        { "name": "label", "type": "string", "required": true, "description": "指标名称" },
+        { "name": "value", "type": "string | number | null", "required": false, "description": "指标值" },
+        { "name": "hint", "type": "string", "required": false, "description": "Ready 状态下的补充说明" },
+        { "name": "status", "type": "'loading' | 'empty' | 'error' | 'ready'", "required": false, "description": "显式状态" },
+        { "name": "emptyTitle", "type": "string", "required": false, "description": "空状态标题" },
+        { "name": "errorTitle", "type": "string", "required": false, "description": "错误标题" }
+      ],
+      "slots": [
+        { "name": "default", "description": "替换 Ready 状态下的数字" },
+        { "name": "actions", "description": "补充操作或重试" }
+      ],
+      "states": ["loading", "empty", "error", "ready"]
+    },
+    {
+      "name": "MarketingHero",
+      "slug": "marketing-hero",
+      "category": "marketing",
+      "purpose": "营销页顶部的眉题、标题、说明和操作区。",
+      "source": "app/components/marketing/Hero.vue",
+      "docs": "docs/design-system/marketing-hero.md",
+      "props": [
+        { "name": "title", "type": "string", "required": true, "description": "主标题" },
+        { "name": "eyebrow", "type": "string", "required": false, "description": "标题上方的短标签" },
+        { "name": "description", "type": "string", "required": false, "description": "标题下的说明" }
+      ],
+      "slots": [
+        { "name": "title", "description": "替换标题" },
+        { "name": "description", "description": "替换说明" },
+        { "name": "actions", "description": "操作按钮" },
+        { "name": "default", "description": "操作区后的补充内容" }
+      ],
+      "states": []
+    },
+    {
+      "name": "MarketingFeatureGrid",
+      "slug": "marketing-feature-grid",
+      "category": "marketing",
+      "purpose": "用卡片展示一组功能说明，并处理加载、空列表和错误。",
+      "source": "app/components/marketing/FeatureGrid.vue",
+      "docs": "docs/design-system/marketing-feature-grid.md",
+      "props": [
+        { "name": "items", "type": "MarketingFeature[]", "required": true, "description": "卡片标题和说明" },
+        { "name": "status", "type": "'loading' | 'empty' | 'error' | 'ready'", "required": false, "description": "显式状态" },
+        { "name": "emptyTitle", "type": "string", "required": false, "description": "空状态标题" },
+        { "name": "emptyDescription", "type": "string", "required": false, "description": "空状态说明" },
+        { "name": "errorTitle", "type": "string", "required": false, "description": "错误标题" },
+        { "name": "errorDescription", "type": "string", "required": false, "description": "错误说明" }
+      ],
+      "slots": [
+        { "name": "item", "description": "自定义单张卡片，参数为 item" },
+        { "name": "actions", "description": "Empty 或 Error 上的操作" }
+      ],
+      "states": ["loading", "empty", "error", "ready"]
+    },
+    {
+      "name": "MarketingSiteHeader",
+      "slug": "marketing-site-header",
+      "category": "marketing",
+      "purpose": "站点顶栏，包含品牌、主导航和操作插槽。",
+      "source": "app/components/marketing/SiteHeader.vue",
+      "docs": "docs/design-system/marketing-site-header.md",
+      "props": [
+        { "name": "title", "type": "string", "required": true, "description": "品牌名称" },
+        { "name": "links", "type": "MarketingNavLink[]", "required": false, "description": "主导航" },
+        { "name": "homeTo", "type": "string", "required": false, "description": "品牌链接" },
+        { "name": "navLabel", "type": "string", "required": false, "description": "导航无障碍名称" }
+      ],
+      "slots": [
+        { "name": "actions", "description": "导航右侧操作" }
+      ],
+      "states": []
+    },
+    {
+      "name": "MarketingSiteFooter",
+      "slug": "marketing-site-footer",
+      "category": "marketing",
+      "purpose": "站点页脚，包含版权和法务链接。",
+      "source": "app/components/marketing/SiteFooter.vue",
+      "docs": "docs/design-system/marketing-site-footer.md",
+      "props": [
+        { "name": "title", "type": "string", "required": true, "description": "版权行中的站点名" },
+        { "name": "links", "type": "MarketingNavLink[]", "required": false, "description": "页脚链接" },
+        { "name": "navLabel", "type": "string", "required": false, "description": "导航无障碍名称" }
+      ],
+      "slots": [],
+      "states": []
+    },
+    {
+      "name": "MarketingArticle",
+      "slug": "marketing-article",
+      "category": "marketing",
+      "purpose": "政策或长文页面的标题、正文和发布状态。",
+      "source": "app/components/marketing/Article.vue",
+      "docs": "docs/design-system/marketing-article.md",
+      "props": [
+        { "name": "title", "type": "string", "required": true, "description": "文章标题" },
+        { "name": "status", "type": "'loading' | 'empty' | 'error' | 'ready'", "required": false, "description": "发布状态" },
+        { "name": "description", "type": "string", "required": false, "description": "Empty 正文或 Error 说明" },
+        { "name": "errorTitle", "type": "string", "required": false, "description": "错误标题" }
+      ],
+      "slots": [
+        { "name": "default", "description": "Ready 正文" },
+        { "name": "actions", "description": "Error 上的操作" }
+      ],
+      "states": ["loading", "empty", "error", "ready"]
+    }
+  ]
+}

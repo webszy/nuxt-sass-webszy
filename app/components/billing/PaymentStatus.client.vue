@@ -25,4 +25,4 @@ async function poll() {
 onMounted(poll)
 onBeforeUnmount(() => { stopped = true; clearTimeout(timer) })
 </script>
-<template><section class="card"><h2>Payment status.</h2><p role="status">{{ status }}</p><UButton to="/pricing">Back to pricing</UButton></section></template>
+<template><section class="ds-panel"><h2>Payment status.</h2><p role="status">{{ status }}</p><UButton to="/pricing">Back to pricing</UButton></section></template>
